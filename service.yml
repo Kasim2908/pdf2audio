@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: pdf2audio-service
+spec:
+  selector:
+    app: pdf2audio
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8501
+      nodePort: 30080
+  type: NodePort

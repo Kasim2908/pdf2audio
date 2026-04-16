@@ -1,28 +1,31 @@
 # 📄 PDF to Audio Converter (DevOps Project)
 
-A cloud-ready **PDF to Audio Converter** that transforms PDF documents into speech using Python, containerization, and Kubernetes.
+A **cloud-ready PDF to Audio Converter** that transforms PDF documents into speech using Python, Docker, Kubernetes, and CI/CD automation.
 
 ---
 
 ## 🚀 Features
 
-* 📄 Upload PDF files
+* 📄 Upload PDF files via web UI
 * 🔊 Convert text to speech (MP3)
-* 🌐 Web interface using Streamlit
+* 🎧 Play and download audio
+* 🌍 Multi-language support
+* ⚡ Adjustable speech speed
+* 🎨 Modern Streamlit UI
 * 🐳 Dockerized application
-* ☸️ Kubernetes deployment ready
-* ⚙️ DevOps pipeline compatible
+* ☸️ Kubernetes deployment
+* ⚙️ CI/CD with GitHub Actions
 
 ---
 
 ## 🛠️ Tech Stack
 
-* **Backend:** Python
-* **Framework:** Streamlit
+* **Frontend & Backend:** Python + Streamlit
 * **Libraries:** PyPDF2, gTTS
 * **Containerization:** Docker
 * **Orchestration:** Kubernetes
-* **CI/CD:** GitHub Actions (planned)
+* **CI/CD:** GitHub Actions
+* **Registry:** Docker Hub
 
 ---
 
@@ -36,30 +39,22 @@ pdf2audio/
 ├── Dockerfile
 ├── deployment.yml
 ├── service.yml
+├── .github/
+│   └── workflows/
+│       └── deploy.yml
 └── README.md
 ```
 
 ---
 
-## ⚙️ Installation & Setup
+## ⚙️ Run Locally
 
-### 1️⃣ Clone the repository
-
-```
-git clone https://github.com/Kasim2908/pdf2audio.git
-cd pdf2audio
-```
-
----
-
-### 2️⃣ Run Locally
-
-```
+```bash
 pip install -r requirements.txt
 streamlit run app.py
 ```
 
-Open in browser:
+Open:
 
 ```
 http://localhost:8501
@@ -71,13 +66,13 @@ http://localhost:8501
 
 ### Build Image
 
-```
+```bash
 docker build -t pdf2audio .
 ```
 
 ### Run Container
 
-```
+```bash
 docker run -p 8501:8501 pdf2audio
 ```
 
@@ -87,57 +82,97 @@ docker run -p 8501:8501 pdf2audio
 
 ### Apply Deployment
 
-```
+```bash
 kubectl apply -f deployment.yml
 ```
 
 ### Apply Service
 
-```
+```bash
 kubectl apply -f service.yml
+```
+
+### Access App
+
+```
+http://localhost:30080
 ```
 
 ---
 
-## 🌐 Access Application
+## ⚙️ CI/CD Pipeline
+
+This project uses GitHub Actions to automate:
+
+* 🔄 Build Docker image on every push
+* 📦 Push image to Docker Hub
+
+### Workflow File
 
 ```
-http://<NodeIP>:30007
+.github/workflows/deploy.yml
+```
+
+---
+
+## 🔁 Local Continuous Deployment (CD)
+
+Since Kubernetes is running locally, deployment is handled using a simple script.
+
+### Create `deploy.bat`
+
+```bat
+docker pull mohammadkasim/pdf2audio:latest
+kubectl rollout restart deployment pdf2audio-deployment
+```
+
+### Run Deployment
+
+```bash
+deploy.bat
+```
+
+---
+
+## 🔄 DevOps Workflow
+
+```
+Code → GitHub Push → CI (Build + Push Image) → Local CD → Kubernetes Deployment
 ```
 
 ---
 
 ## 🔥 DevOps Highlights
 
-* Containerized using Docker
-* Lightweight image optimization
-* Kubernetes deployment with scaling
-* Service exposure using NodePort
-* Ready for CI/CD automation
+* Docker image optimization
+* Kubernetes Deployment & Service
+* NodePort exposure
+* CI pipeline with GitHub Actions
+* Local CD automation
+* Real-world debugging & fixes
 
 ---
 
 ## 📌 Future Enhancements
 
-* 🔁 CI/CD pipeline using GitHub Actions
-* ☁️ Cloud deployment (AWS/GCP)
-* 🎙️ Advanced AI voices
-* 🌍 Multi-language support
-* 📊 Monitoring with Prometheus & Grafana
+* ☁️ Deploy on AWS (EKS)
+* 🔄 Full CI/CD with cloud Kubernetes
+* 📊 Monitoring (Prometheus + Grafana)
+* 🔐 Authentication system
+* 🎙️ AI-based voice generation
 
 ---
 
 ## 👨‍💻 Author
 
 **Mohammad Kasim**
-
 GitHub: https://github.com/Kasim2908
 
 ---
 
 ## ⭐ Contribute
 
-Feel free to fork this repo and improve it!
+Feel free to fork, improve, and submit pull requests!
 
 ---
 

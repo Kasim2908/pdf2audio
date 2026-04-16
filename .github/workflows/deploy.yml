@@ -9,7 +9,7 @@ env:
   IMAGE_NAME: mohammadkasim/pdf2audio
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,11 +30,3 @@ jobs:
 
     - name: Push Docker image
       run: docker push $IMAGE_NAME:latest
-
-    - name: Set up kubectl
-      uses: azure/setup-kubectl@v3
-
-    - name: Deploy to Kubernetes
-      run: |
-        kubectl apply -f deployment.yml
-        kubectl apply -f service.yml

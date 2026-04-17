@@ -25,7 +25,7 @@ A **cloud-ready PDF to Audio Converter** that transforms PDF documents into spee
 * **Containerization:** Docker
 * **Orchestration:** Kubernetes
 * **CI/CD:** GitHub Actions
-* **Registry:** Docker Hub
+* **Registry:** DockerHub
 
 ---
 
